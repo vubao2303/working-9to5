@@ -63,7 +63,7 @@ var plans = {
         let textEntry = "#text-entry" + counter;
         // give textrentry textContent of use
         $(textEntry).text(plans[property]);
-        console.log (textEntry)
+        console.log (typeof textEntry)
         // #text-entry1
 
         let timeId = "#time" + counter;
@@ -72,14 +72,16 @@ var plans = {
 
     let presentHour = moment().hour();
     console.log (presentHour)
+    console.log (typeof presentHour)
     // 15
 
     let timeString = $(timeId).text();
-    console.log (timeString) 
+    console.log (typeof timeString) 
     // 16:00
 
     let timeNumber = hourNumberFromHourString(timeString); 
     console.log(timeNumber)
+    // undefine
 
     // add class past if the timeNumber from hourvalue is less than present hour 
     if(timeNumber < presentHour) {
@@ -130,3 +132,5 @@ function updatePlans(dayObject) {
     $(this).children("textarea").text(dayObject[res.text()]);
   })
 }
+
+var localS1 = []
