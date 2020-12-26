@@ -1,28 +1,6 @@
-// get live time and date. Luxon? 
-// name var for the user input that will be save in the schedule 
-// use local storage to getItem in this case user input, JSON it and then Parse it
-// on click function for save button. excute the save? putting the user input text into the line of hour
-// for loop? for var =0 for loop, each input = var[i]
-// pushing real life hour into the time block ...
-// conditional statement, if present time < futuretime change color? past hour value <present time change color
-
-
-// var todoSchedule = {
-
-// }
-
-// local storage to store that schedule input 
-// localStorage.getItem("todoSchedule")
-// localStorage.setItem ("todoSchedule")
-
-// need this here to make sure whatever you do, it is ready 
-// $(document).ready(function () {}
-// basic code: 
-// $().on("Click", function (){})
-
-// put Current day and time in the header
+// Current day and time in the header
 $('#currentDay').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
-//  var as an object for user input 
+//  var plans as an object for user input 
 var plans = {
     "9:00": "",
     "10:00": "",
@@ -34,103 +12,119 @@ var plans = {
     "16:00": "",
     "17:00": "",
   };
-//   ready for action 
-  $(document).ready(function(){
-    if(!localStorage.getItem('plans')) {
-      updatePlans(plans);
-    } else {
-      updatePlans(JSON.parse(localStorage.getItem('plans')));
-    }
-  })
 
-  function hourNumberFromHourString(timeString) {
-    switch(timeString) {
-      case "9:00": return 9;
-      case "10:00": return 10;
-      case "11:00": return 11;
-      case "12:00": return 12;
-      case "13:00": return 13;
-      case "14:00": return 14;
-      case "15:00": return 15;
-      case "16:00": return 16;
-      case "17:00": return 17;
-    }
+function changeHtoNumber(timeString) {
+  switch(timeString) {
+    case "9:00": return 9;
+    case "10:00": return 10;
+    case "11:00": return 11;
+    case "12:00": return 12;
+    case "13:00": return 13;
+    case "14:00": return 14;
+    case "15:00": return 15;
+    case "16:00": return 16;
+    case "17:00": return 17;
   }
+}
  
-    // for (const property in object) { to get property out of ofject plans) 
+    // for (const property in object) to get property out of object var = plans 
     var counter = 1;
-    for(const property in plans) {
-        let textEntry = "#text-entry" + counter;
-        // give textrentry textContent of use
-        $(textEntry).text(plans[property]);
-        console.log (typeof textEntry)
-        // #text-entry1
 
-        let timeId = "#time" + counter;
-        console.log (timeId)
-        // #time1
+for(const property in plans) {
+  let textEntry = "#text-entry" + counter;
+  // give textrentry textContent of user input plans 
+  $(textEntry).text(plans[property]);
+  console.log (textEntry)
+  // #text-entry1
 
-    let presentHour = moment().hour();
-    console.log (presentHour)
-    console.log (typeof presentHour)
-    // 15
+  let timeId = "#time" + counter;
+  console.log (timeId)
+  // #time1
 
-    let timeString = $(timeId).text();
-    console.log (typeof timeString) 
-    // 16:00
+  let presentHour = moment().hour();
+  console.log (presentHour)
+  console.log (typeof presentHour)
+  // present hour 
 
-    let timeNumber = hourNumberFromHourString(timeString); 
-    console.log(timeNumber)
-    // undefine
+  let timeString = $(timeId).text();
+  console.log (typeof timeString) 
+  // 16:00
 
-    // add class past if the timeNumber from hourvalue is less than present hour 
-    if(timeNumber < presentHour) {
-      $(textEntry).addClass("past");
+  let timeNumber = changeHtoNumber(timeString); 
+  console.log(timeNumber)
+  //16
 
-    } else if (timeNumber > presentHour) {
-      $(textEntry).addClass("future");
-    } else {
-      $(textEntry).addClass("present");
-    }
-    counter ++;
+  // add class "past" in text area (second collumn) if the timeNumber from hourvalue is less than present hour 
+  if(timeNumber < presentHour) {
+    $(textEntry).addClass("past");
+  
+  // if hour number is more than present hour, add class "future" to text area (second collumn in the row )
+  } else if (timeNumber > presentHour) {
+    $(textEntry).addClass("future");
+
+  // else class present 
+  } else {
+    $(textEntry).addClass("present");
   }
-  $("saveBtn").click(function() {
-    value = $(this).siblings("textarea").val();
-    hourvalue = $(this).siblings("div").text();
-    
-    saveSchedule(hourvalue, value);
-  });
-    
- 
-
-  function loadCorrectDataset() {
-    result = localStorage.getItem('plans')
-    return (result ? result : plans);
+  counter ++;
+  // end the for loop here, for all the properties in var =plans 
+}
+  
+// function ready 
+$(document).ready(function(){
+  if(!localStorage.getItem('plans')) {
+    updateCalendarTasks(plans);
+  } else {
+    // seperate strings 
+    updateCalendarTasks(JSON.parse(localStorage.getItem('plans')));
   }
+})
 
-  function initializeLocalStorage() {
-    localStorage.setItem('plans', JSON.stringify(plans));
-  };
+// when the save button is clicked, add value to textarea which is user input 
+$("button").click(function() {
+  timeString = $(this).siblings("div").text();
+  value = $(this).siblings("textarea").val();
+  
+  saveSchedule(timeString, value);
+  console.log (value);
+});
 
-  function saveToLocalStorage(dayObj) {
-    localStorage.setItem('plans', JSON.stringify(dayObj));
+// save user input into Local storage and stringify it because local storage only take object 
+function saveToLocalStorage(dayObj) {
+  localStorage.setItem('plans', JSON.stringify(dayObj));
 }
 
-function saveSchedule(hourvalue, val) {
+// the actual fucntion for when the save button is clicked 
+function saveSchedule(timeString, val) {
+
   if(!localStorage.getItem('plans')) {
-    initializeLocalStorage();
+      localStorage.setItem('plans', JSON.stringify(plans));
   }
+
   let workHours = JSON.parse(localStorage.getItem('plans'));
-  workHours[hourvalue] = val
+  workHours[timeString] = val
 
   saveToLocalStorage(workHours);
 }
 
-function updatePlans(dayObject) {
+function updateCalendarTasks(dayObj) {
+  //   $("textarea").text()
+
+  // for each row, add value to text area, using this is better than class name because no need to repeat 
   $(".row").each(function(index) {
+      
     let res = $(this).children("div");
-    $(this).children("textarea").text(dayObject[res.text()]);
+    // A jQuery object is nothing more than a beefed-up array of DOM elements.
+    $(this).children("textarea").text(dayObj[res.text()]);
   })
 }
 
-var localS1 = []
+$("button").click(function() {
+  
+  value = $(this).siblings("textarea").val();
+  timeString = $(this).siblings("div").text();
+  
+  saveSchedule(timeString, value);
+  console.log (value);
+});
+
