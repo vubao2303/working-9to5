@@ -42,6 +42,21 @@ var plans = {
       updatePlans(JSON.parse(localStorage.getItem('plans')));
     }
   })
+
+  function hourNumberFromHourString(timeString) {
+    switch(timeString) {
+      case "9:00": return 9;
+      case "10:00": return 10;
+      case "11:00": return 11;
+      case "12:00": return 12;
+      case "13:00": return 13;
+      case "14:00": return 14;
+      case "15:00": return 15;
+      case "16:00": return 16;
+      case "17:00": return 17;
+    }
+  }
+ 
     // for (const property in object) { to get property out of ofject plans) 
     var counter = 1;
     for(const property in plans) {
@@ -49,13 +64,22 @@ var plans = {
         // give textrentry textContent of use
         $(textEntry).text(plans[property]);
         console.log (textEntry)
+        // #text-entry1
+
         let timeId = "#time" + counter;
+        console.log (timeId)
+        // #time1
 
     let presentHour = moment().hour();
+    console.log (presentHour)
+    // 15
 
     let timeString = $(timeId).text();
+    console.log (timeString) 
+    // 16:00
 
-    let timeNumber = hourNumberFromHourValue(timeString); 
+    let timeNumber = hourNumberFromHourString(timeString); 
+    console.log(timeNumber)
 
     // add class past if the timeNumber from hourvalue is less than present hour 
     if(timeNumber < presentHour) {
@@ -75,19 +99,7 @@ var plans = {
     saveSchedule(hourvalue, value);
   });
     
-  function hourNumberFromHourValue(hourvalue) {
-    switch(hourvalue) {
-      case "9:00": return 9;
-      case "10:00": return 10;
-      case "11:00": return 11;
-      case "12:00": return 12;
-      case "13:00": return 13;
-      case "14:00": return 14;
-      case "15:00": return 15;
-      case "16:00": return 16;
-      case "17:00": return 17;
-    }
-  }
+ 
 
   function loadCorrectDataset() {
     result = localStorage.getItem('plans')
