@@ -2,7 +2,7 @@
 Day Calender to those who have a busy schedule. This page provide a page with current date and time to create schedule using time blocks align with work hours from 9:00-17:00. Past hours will turn grey while future ones are in mint colore and present hour is red. Schedule are saved until detete! Let's get bee-zzzz !
 
 ## Site Picture
-![Site](./Assets/work-day-scheduler.gif)
+![Site](./Assets/workday.png)
 
 # Table of Contents 
 [Tittle](#Working-9to5)

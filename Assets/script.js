@@ -26,7 +26,7 @@ function changeHtoNumber(timeString) {
     case "17:00": return 17;
   }
 }
- 
+
     // for (const property in object) to get property out of object var = plans 
     var counter = 1;
 
@@ -69,28 +69,28 @@ for(const property in plans) {
   counter ++;
   // end the for loop here, for all the properties in var =plans 
 }
-  
-// function ready 
+
+// // function ready 
 $(document).ready(function(){
   if(!localStorage.getItem('plans')) {
-    updateCalendarTasks(plans);
+    addPlans(plans);
   } else {
     // seperate strings 
-    updateCalendarTasks(JSON.parse(localStorage.getItem('plans')));
+    addPlans(JSON.parse(localStorage.getItem('plans')));
   }
 })
+
 
 // when the save button is clicked, add value to textarea which is user input 
 $("button").click(function() {
   timeString = $(this).siblings("div").text();
   value = $(this).siblings("textarea").val();
-  
   saveSchedule(timeString, value);
   console.log (value);
 });
 
 // save user input into Local storage and stringify it because local storage only take object 
-function saveToLocalStorage(dayObj) {
+function saveToS(dayObj) {
   localStorage.setItem('plans', JSON.stringify(dayObj));
 }
 
@@ -104,12 +104,10 @@ function saveSchedule(timeString, val) {
   let workHours = JSON.parse(localStorage.getItem('plans'));
   workHours[timeString] = val
 
-  saveToLocalStorage(workHours);
+  saveToS(workHours);
 }
 
-function updateCalendarTasks(dayObj) {
-  //   $("textarea").text()
-
+function addPlans(dayObj) {
   // for each row, add value to text area, using this is better than class name because no need to repeat 
   $(".row").each(function(index) {
       
@@ -128,3 +126,98 @@ $("button").click(function() {
   console.log (value);
 });
 
+
+
+
+
+
+// function updateCalendarTasks(dayObj) {
+//   //   $("textarea").text()
+//   $(".row").each(function(index) {
+//     let res = $(this).children("div");
+//     $(this).children("textarea").text(dayObj[res.text()]);
+//   })
+// }
+
+// $("button").click(function() {
+  
+//   value = $(this).siblings("textarea").val();
+//   timeString = $(this).siblings("div").text();
+  
+//   saveSchedule(timeString, value);
+//   console.log (value);
+// });
+
+
+// var textarea1= $("#text-entry1").val();
+// $("#btn1").on("click", function() {
+//   localStorage.setItem("input", textarea1);
+// console.log (textarea1)
+// });
+
+
+// var textarea1 = $("#text-entry1").val();
+// console.log (time1, textarea1);
+// $(".saveBtn").on("click", function() {
+//   //   // localStorage.setItem (timeString,textarea1)
+//   //   // var textarea = $(textEntry).val()
+//   //   var plansInput= $(textEntry).text(plans[property]);
+//   // localStorage.setItem("plansInput", JSON.stringify(plansInput));
+//   var textarea = $("textarea").val();
+//   console.log (textarea);
+//   localStorage.setItem("input", textarea)
+//   localStorage.getItem (textarea)
+//   });
+  
+//   }
+  
+  //   var textarea1 = $("#text-entry1").val();
+  // console.log (time1, textarea1);
+  // $("#btn1").on("click", function() {
+  //   // localStorage.setItem (timeString,textarea1)
+  //   // var textarea = $(textEntry).val()
+  //   var plansInput= $(textEntry).text(plans[property]);
+  // localStorage.setItem("plansInput", JSON.stringify(plansInput));
+  // // var textarea1 = $("#text-entry1").val();
+  // // console.log (textarea1);
+  // // localStorage.setItem("input", textarea1)
+    
+  // });
+  // }
+  
+  
+  
+  // var textarea1 = $("#text-entry1").value.trim();
+  // console.log (textarea1);
+  // localStorage.setItem("input", textarea1)
+  
+  // localStorage.setItem("plans", JSON.stringify(plans));
+  
+  // // var textarea1= $(textEntry).val(plans[property]);
+  // var time1 = $("#time1").val();
+  // console.log (time1, textarea1);
+  // $("#btn1").on("click", function() {
+  //   localStorage.setItem (time1,textarea1)
+    
+  
+    
+  // });
+  
+  
+  
+  
+  
+  
+  // JSON.stringyfy 
+  // JSON.parse
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
