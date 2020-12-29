@@ -80,7 +80,6 @@ $(document).ready(function(){
   }
 })
 
-
 // when the save button is clicked, add value to textarea which is user input 
 $("button").click(function() {
   timeString = $(this).siblings("div").text();
@@ -126,93 +125,6 @@ $("button").click(function() {
   console.log (value);
 });
 
-
-
-
-
-
-// function updateCalendarTasks(dayObj) {
-//   //   $("textarea").text()
-//   $(".row").each(function(index) {
-//     let res = $(this).children("div");
-//     $(this).children("textarea").text(dayObj[res.text()]);
-//   })
-// }
-
-// $("button").click(function() {
-  
-//   value = $(this).siblings("textarea").val();
-//   timeString = $(this).siblings("div").text();
-  
-//   saveSchedule(timeString, value);
-//   console.log (value);
-// });
-
-
-// var textarea1= $("#text-entry1").val();
-// $("#btn1").on("click", function() {
-//   localStorage.setItem("input", textarea1);
-// console.log (textarea1)
-// });
-
-
-// var textarea1 = $("#text-entry1").val();
-// console.log (time1, textarea1);
-// $(".saveBtn").on("click", function() {
-//   //   // localStorage.setItem (timeString,textarea1)
-//   //   // var textarea = $(textEntry).val()
-//   //   var plansInput= $(textEntry).text(plans[property]);
-//   // localStorage.setItem("plansInput", JSON.stringify(plansInput));
-//   var textarea = $("textarea").val();
-//   console.log (textarea);
-//   localStorage.setItem("input", textarea)
-//   localStorage.getItem (textarea)
-//   });
-  
-//   }
-  
-  //   var textarea1 = $("#text-entry1").val();
-  // console.log (time1, textarea1);
-  // $("#btn1").on("click", function() {
-  //   // localStorage.setItem (timeString,textarea1)
-  //   // var textarea = $(textEntry).val()
-  //   var plansInput= $(textEntry).text(plans[property]);
-  // localStorage.setItem("plansInput", JSON.stringify(plansInput));
-  // // var textarea1 = $("#text-entry1").val();
-  // // console.log (textarea1);
-  // // localStorage.setItem("input", textarea1)
-    
-  // });
-  // }
-  
-  
-  
-  // var textarea1 = $("#text-entry1").value.trim();
-  // console.log (textarea1);
-  // localStorage.setItem("input", textarea1)
-  
-  // localStorage.setItem("plans", JSON.stringify(plans));
-  
-  // // var textarea1= $(textEntry).val(plans[property]);
-  // var time1 = $("#time1").val();
-  // console.log (time1, textarea1);
-  // $("#btn1").on("click", function() {
-  //   localStorage.setItem (time1,textarea1)
-    
-  
-    
-  // });
-  
-  
-  
-  
-  
-  
-  // JSON.stringyfy 
-  // JSON.parse
-  
-  
-  
   
   
   

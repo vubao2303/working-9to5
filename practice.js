@@ -138,7 +138,7 @@ var plans = [
 ];
 
 for (var i=0; i<plans.length; i++) {
-plans[i].inputplans= $("#text-entry1").val();
+plans[i].inputplans= $("textarea").val();
 }
 
 
