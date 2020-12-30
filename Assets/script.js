@@ -10,7 +10,7 @@ var plans = {
     "14:00": "",
     "15:00": "",
     "16:00": "",
-    "17:00": "",
+    "17:00": ""
   };
 
 function changeHtoNumber(timeString) {
@@ -109,11 +109,10 @@ function saveSchedule(timeString, val) {
 function addPlans(dayObj) {
   // for each row, add value to text area, using this is better than class name because no need to repeat 
   $(".row").each(function(index) {
-      
-    let res = $(this).children("div");
+    let timeText = $(this).children("div").text();
     // A jQuery object is nothing more than a beefed-up array of DOM elements.
-    $(this).children("textarea").text(dayObj[res.text()]);
-  })
+    $(this).children("textarea").text(dayObj[timeText]);
+  });
 }
 
 $("button").click(function() {
