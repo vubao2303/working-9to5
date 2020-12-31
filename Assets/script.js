@@ -1,5 +1,7 @@
 // Current day and time in the header
-$('#currentDay').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+$('#currentDay').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm a'));
+
+
 //  var plans as an object for user input 
 var plans = {
     "9:00": "",
@@ -32,8 +34,10 @@ function changeHtoNumber(timeString) {
 
 for(const property in plans) {
   let textEntry = "#text-entry" + counter;
+
   // give textrentry textContent of user input plans 
   $(textEntry).text(plans[property]);
+  
   console.log (textEntry)
   // #text-entry1
 
@@ -126,7 +130,7 @@ $("button").click(function() {
 
   
   
-  
+  // var counter=1 
   
   
   
