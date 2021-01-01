@@ -1,7 +1,6 @@
 // Current day and time in the header
 $('#currentDay').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm a'));
 
-
 //  var plans as an object for user input 
 var plans = {
     "9:00": "",
@@ -37,26 +36,10 @@ for(const property in plans) {
 
   // give textrentry textContent of user input plans 
   $(textEntry).text(plans[property]);
-  
-  console.log (textEntry)
-  // #text-entry1
-
   let timeId = "#time" + counter;
-  console.log (timeId)
-  // #time1
-
   let presentHour = moment().hour();
-  console.log (presentHour)
-  console.log (typeof presentHour)
-  // present hour 
-
   let timeString = $(timeId).text();
-  console.log (typeof timeString) 
-  // 16:00
-
   let timeNumber = changeHtoNumber(timeString); 
-  console.log(timeNumber)
-  //16
 
   // add class "past" in text area (second collumn) if the timeNumber from hourvalue is less than present hour 
   if(timeNumber < presentHour) {
@@ -89,7 +72,6 @@ $("button").click(function() {
   timeString = $(this).siblings("div").text();
   value = $(this).siblings("textarea").val();
   saveSchedule(timeString, value);
-  console.log (value);
 });
 
 // save user input into Local storage and stringify it because local storage only take object 
@@ -127,10 +109,6 @@ $("button").click(function() {
   saveSchedule(timeString, value);
   console.log (value);
 });
-
-  
-  
-  // var counter=1 
   
   
   
