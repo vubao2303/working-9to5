@@ -1,5 +1,8 @@
 // Current day and time in the header
-$('#currentDay').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm a'));
+// setInterval so the seconds will move (like a countdown )
+setInterval(function() {
+  time= moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a');
+$('#currentDay').text(time)},1000);
 
 //  var plans as an object for user input 
 var plans = {

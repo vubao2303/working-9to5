@@ -30,7 +30,7 @@ Day Calender to those who have a busy schedule. This page provide a page with cu
 * In HTML file 
   <ul>
   <li>Set content in orgnize semantic HTML 
-  <li>Create time blocks for hour 9:00-17:00 that have the <li>hours, room for user input and save button 
+  <li>Create time blocks for hour 9:00-17:00 that have the hours, room for user input and save button 
   <li>Links pages and website and tool pages properly 
   </li>
   </ul>
@@ -40,7 +40,7 @@ Day Calender to those who have a busy schedule. This page provide a page with cu
   <li>Name variables for different objects and function 
   <li>Set current date and time using Jquery 
   <li>Use on click function for save button to save user input in local storage 
-  <li>Go throught the loops of objects by using the for loop <li>to get the value and apply new hour 
+  <li>Go throught the loops of objects by using the for loop to get the value and apply new hour 
   <li>Apply JSON.stringify funtion to add into storage and JSON.parse to get items to the page
   </li>
   </ul>
